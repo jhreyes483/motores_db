@@ -1,11 +1,11 @@
-GRANT -> Otorga permisos
-REVOKE -> quita permisos
+# GRANT -> Otorga permisos
+# REVOKE -> quita permisos
 
-sintaxis 
+# Sintaxis 
 GRANT + prVILEGIOS + on NOMBRE_OBJETO + TO nombre_usuario
 
 
-GRANT sentencia para otorgar permisos
+# GRANT sentencia para otorgar permisos
 SELECT para asignar permiso de lectuta
 INSERT para asignar permiso de iserción 
 UPDATE  para asignar permiso de actualizacón 
@@ -15,12 +15,12 @@ TO luego se indica el nombre del usaurio
 
 ALL PRIVILEGES para asignar todos los permisos sin listar uno por uno 
 
-# crear usuarios 
+# Crear usuarios 
 CREATE USER WebSite WITH PASSWORD 'Contraseña1';
 CREATE USER Developer1 WITH PASSWORD 'Contraseña2';
 CREATE USER Developer2 WITH PASSWORD 'Contraseña3';
 
-#asignar permisos 
+# Asignar permisos 
 GRANT SELECT, INSERT, UPDATE ON actor TO WebSite;  #(actor = tablas)
 GRANT SELECT, INSERT, UPDATE, DELETE ON address TO WebSite;
 GRANT SELECT, INSERT, UPDATE, DELETE ON category TO WebSite;
@@ -37,19 +37,19 @@ GRANT SELECT, ON actor TO Developer2;
 GRANT SELECT, ON address TO Developer2;
 REVOKE DELETE ON film TO WebSite;
 
-# permisos sobre todas las tablas
+# Permisos sobre todas las tablas
 REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM WebSite;
 REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM Developer1;
 REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM Developer2;
 
-#Roles
+# Roles
 CREATE ROLE Developers;
 # ASIGNAR permisos a ese rol
 GRANT SELECT ON actor TO Developers;
 GRANT SELECT ON address TO Developers;
 GRANT SELECT ON category TO Developers;
 
-#crear rol
+# Crear rol
 CREATE ROLE Developers_Seniors;
 #asignar permisos
 GRANT INSERT, UPDATE, DELETE ON actor TO Developers;
@@ -69,7 +69,7 @@ DROP USER Developer2;
 REVOKE ALL PRIVILEGES TABLES IN SCHEMA public FROM Developers;
 REVOKE ALL PRIVILEGES TABLES IN SCHEMA public FROM Developers_Seniors;
 
-#Borrar los roles
+# Borrar los roles
 DROP ROLE Developers;
 DROP ROLE Developers_Seniors;
 
