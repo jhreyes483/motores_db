@@ -5,7 +5,7 @@ sintaxis
 GRANT + prVILEGIOS + on NOMBRE_OBJETO + TO nombre_usuario
 
 
-GRAT sentencia para otorgar permisos
+GRANT sentencia para otorgar permisos
 SELECT para asignar permiso de lectuta
 INSERT para asignar permiso de iserción 
 UPDATE  para asignar permiso de actualizacón 
