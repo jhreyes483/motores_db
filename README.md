@@ -3,7 +3,7 @@
 
 ###RDBMS
 - Estructura de datos
-- Acceso multiusuario 
+- Acceso multi usuario 
 - Control de privilegios
 - Acceso a la red 
 
