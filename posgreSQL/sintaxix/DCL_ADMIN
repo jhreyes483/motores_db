@@ -1,0 +1,77 @@
+GRANT -> Otorga permisos
+REVOKE -> quita permisos
+
+sintaxis 
+GRANT + prVILEGIOS + on NOMBRE_OBJETO + TO nombre_usuario
+
+
+GRAT sentencia para otorgar permisos
+SELECT para asignar permiso de lectuta
+INSERT para asignar permiso de iserción 
+UPDATE  para asignar permiso de actualizacón 
+DETELE para asignar permisos de eliminación 
+ON luego el nombre de la tabla a la cual se le dará permiso
+TO luego se indica el nombre del usaurio 
+
+ALL PRIVILEGES para asignar todos los permisos sin listar uno por uno 
+
+# crear usuarios 
+CREATE USER WebSite WITH PASSWORD 'Contraseña1';
+CREATE USER Developer1 WITH PASSWORD 'Contraseña2';
+CREATE USER Developer2 WITH PASSWORD 'Contraseña3';
+
+#asignar permisos 
+GRANT SELECT, INSERT, UPDATE ON actor TO WebSite;  #(actor = tablas)
+GRANT SELECT, INSERT, UPDATE, DELETE ON address TO WebSite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON category TO WebSite;
+GRANT SELECT, INSERT, UPDATE, DELETE ON country TO WebSite;
+GRANT ALL PRIVILEGES ON film TO WebSite;
+
+GRANT SELECT, ON actor TO Developer1;
+GRANT SELECT, ON address TO Developer1;
+GRANT SELECT, INSERT, UPDATE, DELETE ON category TO Developer1;
+GRANT SELECT, INSERT, UPDATE, DELETE ON country TO Developer1;
+GRANT ALL PRIVILEGES ON film TO Developer1;
+
+GRANT SELECT, ON actor TO Developer2;
+GRANT SELECT, ON address TO Developer2;
+REVOKE DELETE ON film TO WebSite;
+
+# permisos sobre todas las tablas
+REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM WebSite;
+REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM Developer1;
+REVOKE ALL PRIVILEGES ON TABLES IS SCHEMA name_db FROM Developer2;
+
+#Roles
+CREATE ROLE Developers;
+# ASIGNAR permisos a ese rol
+GRANT SELECT ON actor TO Developers;
+GRANT SELECT ON address TO Developers;
+GRANT SELECT ON category TO Developers;
+
+#crear rol
+CREATE ROLE Developers_Seniors;
+#asignar permisos
+GRANT INSERT, UPDATE, DELETE ON actor TO Developers;
+GRANT INSERT, UPDATE, DELETE ON address TO Developers;
+GRANT INSERT, UPDATE, DELETE ON category TO Developers;
+
+# Asignar rol a usaurio
+GRANT Developers TO Developer1;
+GRANT Developers, Developers_Seniors TO Developer2;
+
+# Eliminar los usuarios 
+DROP USER WebSite;
+DROP USER Developer1;
+DROP USER Developer2;
+
+# Qutar privilegios sibre todas las tablas 
+REVOKE ALL PRIVILEGES TABLES IN SCHEMA public FROM Developers;
+REVOKE ALL PRIVILEGES TABLES IN SCHEMA public FROM Developers_Seniors;
+
+#Borrar los roles
+DROP ROLE Developers;
+DROP ROLE Developers_Seniors;
+
+
+
